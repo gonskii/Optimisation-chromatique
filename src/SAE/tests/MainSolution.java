@@ -2,6 +2,10 @@ package SAE.tests;
 
 import SAE.Solution;
 import SAE.algoProf.ResolutionImage;
+import SAE.algorithme.SolutionHistogramme;
+import SAE.algorithme.SolutionHistogrammePlus;
+import SAE.algorithme.SolutionOptimisation;
+import SAE.algorithme.SolutionSpectrale;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,8 +32,8 @@ public class MainSolution {
             //Solution s = new SolutionSpectrale(); // Spectrale
             //Solution s = new SolutionHistogramme(); // Histogramme
             //Solution s = new SolutionHistogrammePlus(); //Histogramme Plus
-            //Solution s = new SolutionOptimisation(); // Optimisation
-            Solution s = new ResolutionImage(); // KMeans
+            Solution s = new SolutionOptimisation(); // Optimisation
+            //Solution s = new ResolutionImage(); // KMeans
 
             BufferedImage retour = s.resoudre(nombreDeCouleurs, bfImg);
 
