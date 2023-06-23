@@ -28,12 +28,12 @@ public class MainSolution {
             // lecture de l'image d'origine
             BufferedImage bfImg = ImageIO.read(new File("./images/" + args[0]));
 
-            /*          On choisit la soulution que l'on souhaite utiliser               */
+            /*On choisit la soulution que l'on souhaite utiliser               */
             //Solution s = new SolutionSpectrale(); // Spectrale
             //Solution s = new SolutionHistogramme(); // Histogramme
             //Solution s = new SolutionHistogrammePlus(); //Histogramme Plus
-            Solution s = new SolutionOptimisation(); // Optimisation
-            //Solution s = new ResolutionImage(); // KMeans
+            //Solution s = new SolutionOptimisation(); // Optimisation
+            Solution s = new ResolutionImage(); // KMeans
 
             BufferedImage retour = s.resoudre(nombreDeCouleurs, bfImg);
 
