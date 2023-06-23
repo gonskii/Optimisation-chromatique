@@ -1,5 +1,6 @@
 package SAE.tests;
 
+import SAE.Solution;
 import SAE.algoProf.ResolutionImage;
 
 import javax.imageio.ImageIO;
