@@ -1,6 +1,5 @@
 package SAE.nosAlgo;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
