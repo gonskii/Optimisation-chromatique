@@ -1,18 +1,15 @@
 package SAE.nosAlgo;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+
 
 import static SAE.nosAlgo.Outils.evaluer;
 import static SAE.nosAlgo.Outils.retournerRGB;
 
-public class SolutionSpectrale {
-
-
-    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
+public class SolutionSpectrale implements Solution{
+    @Override
+    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
         // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
         int maxR = -1, maxG = -1, maxB = -1, minR = -1, minG = -1, minB = -1;
 
@@ -104,9 +101,6 @@ public class SolutionSpectrale {
 
             }
         }
-
         return retour;
-
     }
-
 }

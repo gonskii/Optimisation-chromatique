@@ -3,17 +3,13 @@ package SAE.nosAlgo;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
-public class SolutionOptimisation {
-    public static void main(String[] args) {
-        int nbCouleur = Integer.parseInt(args[0]);
+public class SolutionOptimisation implements Solution {
 
-        try {
-            BufferedImage image = ImageIO.read(new File("./images/images_etudiants/originale.jpg"));
-            BufferedImage copie = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+    @Override
+    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage) {
+            BufferedImage copie = new BufferedImage(bfImage.getWidth(), bfImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 
             HashMap<Color, ArrayList<Pixel>> couleursFinal = new HashMap<>();
 
@@ -23,13 +19,13 @@ public class SolutionOptimisation {
             double minCouleurDistance = 600.0;
 
 
-            while(couleurs.size()<nbCouleur)
+            while(couleurs.size()<nombreDeCouleurs)
             {
                 // choisir un pixel au hasard
-                int x = random.nextInt(image.getWidth());
-                int y = random.nextInt(image.getHeight());
+                int x = random.nextInt(bfImage.getWidth());
+                int y = random.nextInt(bfImage.getHeight());
 
-                int pixelIndex = y * image.getWidth() +x;
+                int pixelIndex = y * bfImage.getWidth() +x;
 
                 if(pixelUse.contains(pixelIndex))
                 {
@@ -38,13 +34,13 @@ public class SolutionOptimisation {
 
                 pixelUse.add(pixelIndex);
 
-                int rgb = image.getRGB(x, y);
+                int rgb = bfImage.getRGB(x, y);
                 Color newColor = new Color(rgb);
 
                 boolean goodDist = true;
 
                 for (Color existingColor : couleurs) {
-                    if (distance(newColor, existingColor) < minCouleurDistance) {
+                    if (Outils.distance(newColor, existingColor) < minCouleurDistance) {
                         goodDist = false;
                         break;
                     }
@@ -58,14 +54,14 @@ public class SolutionOptimisation {
 
             // on crée un histograme:
             HashMap<Color, ArrayList<Pixel>> hashMapColor = new HashMap<Color, ArrayList<Pixel>>();
-            for (int x = 0; x < image.getHeight(); x++) {
-                for (int y = 0; y < image.getWidth(); y++)
+            for (int x = 0; x < bfImage.getHeight(); x++) {
+                for (int y = 0; y < bfImage.getWidth(); y++)
                 {
                     //on crée un objet pixel qui représente le pixel ou nous sommes présent
                     Pixel pixel = new Pixel(x,y);
 
                     //récupérer la couleur du pixel
-                    int[] couleurRGB = couleurRGB(image.getRGB(pixel.getX(),pixel.getY()));
+                    int[] couleurRGB = Outils.retournerRGB(bfImage.getRGB(pixel.getX(),pixel.getY()));
 
                     //on récupére la bonne couleur
                     Color color = new Color(couleurRGB[0],couleurRGB[1], couleurRGB[2]);
@@ -77,7 +73,7 @@ public class SolutionOptimisation {
                     for (Color couleur : couleurs)
                     {
                         //on crée une distance avec la méthode distance
-                        double distance = distance(couleur,color);
+                        double distance = Outils.distance(couleur,color);
 
                         //on compare avec min distance et on ajoute les bonnes couleurs
                         if(distance<minDistance)
@@ -88,18 +84,7 @@ public class SolutionOptimisation {
                     }
 
                     //on ajoute dans l'histograme la bonne couleur avec le pixel associé:
-                    if (hashMapColor.containsKey(bonneColor)) {
-                        // Récupérez la liste des pixels associée à la couleur
-                        ArrayList<Pixel> pixels = hashMapColor.get(bonneColor);
-                        // Ajoutez le pixel à la liste des pixels
-                        pixels.add(pixel);
-                    } else {
-                        // Créez une nouvelle liste de pixels et ajoutez le pixel actuel
-                        ArrayList<Pixel> pixels = new ArrayList<Pixel>();
-                        pixels.add(pixel);
-                        // Ajoutez la couleur avec la liste des pixels dans l'histogramme
-                        hashMapColor.put(bonneColor, pixels);
-                    }
+                    Outils.addHashmap(hashMapColor, pixel, bonneColor);
 
                 }
             }
@@ -116,11 +101,11 @@ public class SolutionOptimisation {
                 for(Pixel pixel: pixels)
                 {
                     //récupérer la couleur du pixel
-                    int[] couleurRGB = couleurRGB(image.getRGB(pixel.getX(),pixel.getY()));
+                    int[] couleurRGB = Outils.retournerRGB(bfImage.getRGB(pixel.getX(),pixel.getY()));
                     //on récupére la bonne couleur
                     Color color = new Color(couleurRGB[0],couleurRGB[1], couleurRGB[2]);
 
-                    double distance = distance(color,couleur);
+                    double distance = Outils.distance(color,couleur);
 
                     if(distance<minDistance)
                     {
@@ -140,14 +125,6 @@ public class SolutionOptimisation {
                     copie.setRGB(pixel.getX(),pixel.getY(),couleur.getRGB());
                 }
             }
-
-
-            ImageIO.write(copie, "PNG", new File("./images/resultatQ5.png"));
-        }
-        catch(IOException e){
-            throw new RuntimeException(e);
-        }
+            return copie;
     }
-
-
 }

@@ -1,6 +1,8 @@
 package SAE.nosAlgo;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Outils {
@@ -40,5 +42,18 @@ public class Outils {
         return (Math.pow(rgbC1[0]-rgbC2[0],2)+Math.pow(rgbC1[1]-rgbC2[1],2)+Math.pow(rgbC1[2]-rgbC2[2],2));
     }
 
-
+    public static void addHashmap(HashMap<Color, ArrayList<Pixel>> histograme, Pixel pixel, Color color) {
+        if (histograme.containsKey(color)) {
+            // on récupère la liste des pixels associée à la couleur
+            ArrayList<Pixel> pixels = histograme.get(color);
+            // on ajoute le pixel à la liste des pixels
+            pixels.add(pixel);
+        } else {
+            // on crée une nouvelle liste de pixels et on ajoute le pixel actuel
+            ArrayList<Pixel> pixels = new ArrayList<Pixel>();
+            pixels.add(pixel);
+            // on ajoute la couleur avec la liste des pixels dans l'histogramme
+            histograme.put(color, pixels);
+        }
+    }
 }

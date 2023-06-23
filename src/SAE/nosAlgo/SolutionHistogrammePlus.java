@@ -1,19 +1,15 @@
 package SAE.nosAlgo;
 
-import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
 import static SAE.nosAlgo.Outils.evaluer;
 
-public class SolutionHistogrammePlus {
-
-
-    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
+public class SolutionHistogrammePlus implements Solution {
+    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
 
         // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
         Color max=null, min=null;
@@ -127,11 +123,6 @@ public class SolutionHistogrammePlus {
 
             }
         }
-
         return retour;
-
     }
-
-
-
 }
