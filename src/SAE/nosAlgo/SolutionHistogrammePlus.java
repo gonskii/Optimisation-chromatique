@@ -9,7 +9,15 @@ import java.util.List;
 import static SAE.nosAlgo.Outils.evaluer;
 
 public class SolutionHistogrammePlus implements Solution {
-    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
+
+    /**
+     * Méthode qui permet de résoudre le problème
+     * @param nombreDeCouleurs, nombre de couleurs souhaite
+     * @param bfImage, le buffer de l'image
+     * @return , retourne le buffer de l'image finale avec le nombre de couleurs souhaite
+     */
+    @Override
+    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage) {
 
         // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
         Color max=null, min=null;
@@ -17,7 +25,7 @@ public class SolutionHistogrammePlus implements Solution {
         // un tableau de couleurs à remplir afin d'avoir les couleurs prédéfinies
         Color[] couleurs = new Color[nombreDeCouleurs];
 
-        BufferedImage retour = new BufferedImage(bfImg.getWidth(), bfImg.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+        BufferedImage retour = new BufferedImage(bfImage.getWidth(), bfImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
         TreeMap<Color, Integer> utilisations = new TreeMap<Color, Integer>(new Comparator<Color>() {
             @Override
             public int compare(Color c1, Color c2) {
@@ -26,10 +34,10 @@ public class SolutionHistogrammePlus implements Solution {
         });
 
         //on classe les couleurs selon la plus utilisée.
-        for (int i = 0; i < bfImg.getHeight(); i++) {
-            for (int j = 0; j < bfImg.getWidth(); j++) {
+        for (int i = 0; i < bfImage.getHeight(); i++) {
+            for (int j = 0; j < bfImage.getWidth(); j++) {
                 // on recupère la couleur aux coordonnées précises
-                Color couleurRGB = new Color(bfImg.getRGB(j, i));
+                Color couleurRGB = new Color(bfImage.getRGB(j, i));
 
                 // si elle est deja presente dans la map alors on incremente
                 int nb = 1;
@@ -101,14 +109,14 @@ public class SolutionHistogrammePlus implements Solution {
 
 
         //main Q5
-        for (int i = 0; i < bfImg.getHeight(); i++) {
-            for (int j = 0; j < bfImg.getWidth(); j++) {
+        for (int i = 0; i < bfImage.getHeight(); i++) {
+            for (int j = 0; j < bfImage.getWidth(); j++) {
 
                 Color gardee = null;
                 int tmp = -1;
 
                 for (Color c:couleurs ) {
-                    int eval = evaluer(new Color(bfImg.getRGB(j,i)), c);
+                    int eval = evaluer(new Color(bfImage.getRGB(j,i)), c);
                     if (eval<tmp){
                         tmp=eval;
                         gardee=c;

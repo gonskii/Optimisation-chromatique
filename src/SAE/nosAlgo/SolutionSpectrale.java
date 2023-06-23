@@ -8,8 +8,15 @@ import static SAE.nosAlgo.Outils.evaluer;
 import static SAE.nosAlgo.Outils.retournerRGB;
 
 public class SolutionSpectrale implements Solution{
+
+    /**
+     * Méthode qui permet de résoudre le problème
+     * @param nombreDeCouleurs, nombre de couleurs souhaite
+     * @param bfImage, le buffer de l'image
+     * @return , retourne le buffer de l'image finale avec le nombre de couleurs souhaite
+     */
     @Override
-    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
+    public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage) {
         // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
         int maxR = -1, maxG = -1, maxB = -1, minR = -1, minG = -1, minB = -1;
 
@@ -17,12 +24,12 @@ public class SolutionSpectrale implements Solution{
         Color[] couleurs = new Color[nombreDeCouleurs];
 
         //on parcours une premiere fois l image afin de connaitre la plage de couleurs
-        BufferedImage retour = new BufferedImage(bfImg.getWidth(), bfImg.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+        BufferedImage retour = new BufferedImage(bfImage.getWidth(), bfImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 
-        for (int i = 0; i < bfImg.getHeight(); i++) {
-            for (int j = 0; j < bfImg.getWidth(); j++) {
+        for (int i = 0; i < bfImage.getHeight(); i++) {
+            for (int j = 0; j < bfImage.getWidth(); j++) {
                 // on recupère la couleur aux coordonnées précises
-                int[] couleurRGB = retournerRGB(bfImg.getRGB(j, i));
+                int[] couleurRGB = retournerRGB(bfImage.getRGB(j, i));
                 // on initialise nos variables avec la première couleur
                 if (i == 0 && j == 0) {
                     minR = couleurRGB[0];
@@ -79,14 +86,14 @@ public class SolutionSpectrale implements Solution{
 
         // descente de gradient
         //main Q5
-        for (int i = 0; i < bfImg.getHeight(); i++) {
-            for (int j = 0; j < bfImg.getWidth(); j++) {
+        for (int i = 0; i < bfImage.getHeight(); i++) {
+            for (int j = 0; j < bfImage.getWidth(); j++) {
 
                 Color gardee = null;
                 int tmp = -1;
 
                 for (Color c : couleurs) {
-                    int eval = evaluer(new Color(bfImg.getRGB(j, i)), c);
+                    int eval = evaluer(new Color(bfImage.getRGB(j, i)), c);
                     if (eval < tmp) {
                         tmp = eval;
                         gardee = c;

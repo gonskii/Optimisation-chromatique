@@ -7,6 +7,12 @@ import java.util.*;
 
 public class SolutionOptimisation implements Solution {
 
+    /**
+     * Méthode qui permet de résoudre le problème
+     * @param nombreDeCouleurs, nombre de couleurs souhaite
+     * @param bfImage, le buffer de l'image
+     * @return , retourne le buffer de l'image finale avec le nombre de couleurs souhaite
+     */
     @Override
     public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage) {
             BufferedImage copie = new BufferedImage(bfImage.getWidth(), bfImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
