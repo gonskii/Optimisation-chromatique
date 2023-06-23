@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static SAE.algoProf.ResolutionImage.resoudre;
+
 public class KMeans {
 
     public static void main(String[] args) throws IOException {
@@ -16,11 +18,12 @@ public class KMeans {
         // nombre de couleurs
         int nombreDeCouleurs = Integer.parseInt(args[1]);
 
+        // image de base
+        BufferedImage image = ImageIO.read(new File("./images/"+args[0]));
+
         // boucler pour stats
         for (int i = 0; i < 4; i++) {
-
-            ResolutionImage ri = new ResolutionImage();
-            BufferedImage retour = ri.creerImage(nombreDeCouleurs, args[0], ResolutionImage.getRandom());
+            BufferedImage retour = resoudre(nombreDeCouleurs, image);
 
             ImageIO.write(retour,"PNG",new File("./images/resultats/resultatMaSolution"+i+".png"));
 

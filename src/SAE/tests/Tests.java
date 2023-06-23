@@ -22,7 +22,8 @@ public class Tests {
             BufferedImage bfImg = ImageIO.read(new File("./images/"+args[0]));
 
 
-
+            BufferedImage retour=null;
+            ImageIO.write(retour,"PNG",new File("./images/resultats/resultatMaSolution.png"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);

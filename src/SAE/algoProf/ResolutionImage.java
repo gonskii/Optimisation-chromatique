@@ -11,30 +11,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import static SAE.nosAlgo.Outils.*;
+
 public class ResolutionImage {
 
-
-    public static Random instance = null;
-
-    public static Random getRandom() {
-        if (instance == null) {
-            instance = new Random(1234567890);
-        }
-        return instance;
-    }
-
-    public BufferedImage creerImage(int nombreDeCouleurs, String chemin, Random random){
+    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg){
         // un tableau de couleurs à remplir
         Color[] couleurs = new Color[nombreDeCouleurs];
 
-        try {
-            // recuperation de l image
-            BufferedImage bfImg = ImageIO.read(new File("./images/" + chemin));
             // image de retour
             BufferedImage retour = new BufferedImage(bfImg.getWidth(), bfImg.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 
             HashMap<Color, ArrayList<Pixel>> groupe;
 
+            Random random = getRandom();
 
             // initialisation des centroïdes
             for (int i = 0; i < nombreDeCouleurs; i++) {
@@ -134,28 +124,7 @@ public class ResolutionImage {
             }
 
             return retour;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-
-    public static int evaluer(Color c1, Color c2) {
-        int[] tabC1 = retournerRGB(c1.getRGB());
-        int[] tabC2 = retournerRGB(c2.getRGB());
-
-        int d = 0;
-        for (int i = 0; i < 3; i++) {
-            d += Math.pow((tabC1[i] - tabC2[i]), 2);
-        }
-        return d;
-    }
-
-    public static int[] retournerRGB(int rgb) {
-        int blue = rgb & 0xff;
-        int green = (rgb & 0xff00) >> 8;
-        int red = (rgb & 0xff0000) >> 16;
-        return new int[]{red, green, blue};
     }
 
 }
