@@ -1,6 +1,7 @@
 package SAE.algoProf;
 
 import SAE.nosAlgo.Pixel;
+import SAE.nosAlgo.Solution;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,9 +14,9 @@ import java.util.Random;
 
 import static SAE.nosAlgo.Outils.*;
 
-public class ResolutionImage {
+public class ResolutionImage implements Solution {
 
-    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg){
+    public BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg){
         // un tableau de couleurs à remplir
         Color[] couleurs = new Color[nombreDeCouleurs];
 

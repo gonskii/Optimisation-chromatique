@@ -76,13 +76,11 @@ public class SolutionSpectrale implements Solution{
             couleurs[i] = new Color(r, g, b);
         }
 
+        /*
         for (Color c : couleurs) {
             System.out.println(c);
         }
-        System.out.println("maxR " + maxR + " minR " + minR);
-        System.out.println("maxG " + maxG + " minG " + minG);
-        System.out.println("maxB " + maxB + " minB " + minB);
-
+         */
 
         // descente de gradient
         //main Q5
