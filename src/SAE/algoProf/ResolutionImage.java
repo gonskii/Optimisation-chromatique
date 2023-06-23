@@ -1,6 +1,6 @@
 package SAE.algoProf;
 
-import SAE.anas.Pixel;
+import SAE.nosAlgo.Pixel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

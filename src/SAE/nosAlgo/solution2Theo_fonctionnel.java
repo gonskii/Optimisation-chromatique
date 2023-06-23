@@ -1,4 +1,4 @@
-package SAE;
+package SAE.nosAlgo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package SAE.anas;
+package SAE.nosAlgo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -7,8 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class SolutionFonctionnelle {
-
+public class SolutionOptimisation {
     public static void main(String[] args) {
         int nbCouleur = Integer.parseInt(args[0]);
 
@@ -18,7 +17,7 @@ public class SolutionFonctionnelle {
 
             HashMap<Color, ArrayList<Pixel>> couleursFinal = new HashMap<>();
 
-            Random random = new Random();
+            Random random = RandomInt.getRandom();
             ArrayList<Color> couleurs = new ArrayList<Color>();
             HashSet<Integer> pixelUse = new HashSet<>();
             double minCouleurDistance = 600.0;
