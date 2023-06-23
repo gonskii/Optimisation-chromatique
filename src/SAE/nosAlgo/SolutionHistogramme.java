@@ -1,6 +1,8 @@
 package SAE.nosAlgo;
 
 
+import SAE.Solution;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;

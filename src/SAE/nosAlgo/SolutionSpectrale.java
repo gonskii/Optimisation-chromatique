@@ -1,5 +1,7 @@
 package SAE.nosAlgo;
 
+import SAE.Solution;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -7,8 +9,7 @@ import java.awt.image.BufferedImage;
 import static SAE.nosAlgo.Outils.evaluer;
 import static SAE.nosAlgo.Outils.retournerRGB;
 
-public class SolutionSpectrale implements Solution{
-
+public class SolutionSpectrale implements Solution {
     /**
      * Méthode qui permet de résoudre le problème
      * @param nombreDeCouleurs, nombre de couleurs souhaite

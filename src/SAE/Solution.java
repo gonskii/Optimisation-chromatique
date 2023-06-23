@@ -1,4 +1,4 @@
-package SAE.nosAlgo;
+package SAE;
 
 import java.awt.image.BufferedImage;
 

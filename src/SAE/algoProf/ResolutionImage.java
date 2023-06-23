@@ -1,26 +1,25 @@
 package SAE.algoProf;
 
+import SAE.Solution;
 import SAE.nosAlgo.Pixel;
 
-import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 import static SAE.nosAlgo.Outils.*;
 
-public class ResolutionImage {
+public class ResolutionImage implements Solution {
 
-    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg){
+    public BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage){
         // un tableau de couleurs à remplir
         Color[] couleurs = new Color[nombreDeCouleurs];
 
             // image de retour
-            BufferedImage retour = new BufferedImage(bfImg.getWidth(), bfImg.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+            BufferedImage retour = new BufferedImage(bfImage.getWidth(), bfImage.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 
             HashMap<Color, ArrayList<Pixel>> groupe;
 
@@ -29,9 +28,9 @@ public class ResolutionImage {
             // initialisation des centroïdes
             for (int i = 0; i < nombreDeCouleurs; i++) {
                 // choisir un pixel au hasard
-                int x = random.nextInt(bfImg.getWidth());
-                int y = random.nextInt(bfImg.getHeight());
-                couleurs[i] = new Color(bfImg.getRGB(x, y));
+                int x = random.nextInt(bfImage.getWidth());
+                int y = random.nextInt(bfImage.getHeight());
+                couleurs[i] = new Color(bfImage.getRGB(x, y));
             }
 
             boolean fini = false;
@@ -46,13 +45,13 @@ public class ResolutionImage {
                 }
 
                 // Construction des groupes
-                for (int x = 0; x < bfImg.getHeight(); x++) {
-                    for (int y = 0; y < bfImg.getWidth(); y++) {
+                for (int x = 0; x < bfImage.getHeight(); x++) {
+                    for (int y = 0; y < bfImage.getWidth(); y++) {
                         //on crée un objet pixel qui représente le pixel ou nous sommes présent
                         Pixel pixel = new Pixel(x, y);
 
                         //récupérer la couleur du pixel
-                        int[] couleurRGB = retournerRGB(bfImg.getRGB(pixel.getX(), pixel.getY()));
+                        int[] couleurRGB = retournerRGB(bfImage.getRGB(pixel.getX(), pixel.getY()));
 
                         //on récupére la bonne couleur
                         Color color = new Color(couleurRGB[0], couleurRGB[1], couleurRGB[2]);
@@ -83,7 +82,7 @@ public class ResolutionImage {
                     Color centroïde = couleurs[i];
                     int[] sommeRGB = new int[3];
                     for (Pixel p : groupe.get(centroïde)) {
-                        int[] retourRGB = retournerRGB(bfImg.getRGB(p.getX(), p.getY()));
+                        int[] retourRGB = retournerRGB(bfImage.getRGB(p.getX(), p.getY()));
                         for (int j = 0; j < 3; j++) {
                             sommeRGB[j] += retourRGB[j];
                         }
@@ -100,14 +99,14 @@ public class ResolutionImage {
                 }
             }
 
-            for (int i = 0; i < bfImg.getHeight(); i++) {
-                for (int j = 0; j < bfImg.getWidth(); j++) {
+            for (int i = 0; i < bfImage.getHeight(); i++) {
+                for (int j = 0; j < bfImage.getWidth(); j++) {
 
                     Color gardee = null;
                     int tmp = -1;
 
                     for (Color c:couleurs ) {
-                        int eval = evaluer(new Color(bfImg.getRGB(j,i)), c);
+                        int eval = evaluer(new Color(bfImage.getRGB(j,i)), c);
                         if (eval<tmp){
                             tmp=eval;
                             gardee=c;
@@ -122,9 +121,7 @@ public class ResolutionImage {
 
                 }
             }
-
             return retour;
-
     }
 
 }

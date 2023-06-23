@@ -1,6 +1,8 @@
 package SAE.nosAlgo;
 
 
+import SAE.Solution;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -9,7 +11,6 @@ import java.util.List;
 import static SAE.nosAlgo.Outils.evaluer;
 
 public class SolutionHistogrammePlus implements Solution {
-
     /**
      * Méthode qui permet de résoudre le problème
      * @param nombreDeCouleurs, nombre de couleurs souhaite
@@ -19,7 +20,7 @@ public class SolutionHistogrammePlus implements Solution {
     @Override
     public  BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImage) {
 
-        // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
+        // min et max : int des couleurs situées à l'extrémité de la plage de couleur de l'image.
         Color max=null, min=null;
 
         // un tableau de couleurs à remplir afin d'avoir les couleurs prédéfinies
