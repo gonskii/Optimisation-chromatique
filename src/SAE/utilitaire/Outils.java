@@ -1,4 +1,6 @@
-package SAE.nosAlgo;
+package SAE.utilitaire;
+
+import SAE.utilitaire.Pixel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

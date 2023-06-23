@@ -1,4 +1,4 @@
-package SAE.nosAlgo;
+package SAE.algorithme;
 
 
 import SAE.Solution;
@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
 
-import static SAE.nosAlgo.Outils.evaluer;
+import static SAE.utilitaire.Outils.evaluer;
 
 public class SolutionHistogrammePlus implements Solution {
     /**

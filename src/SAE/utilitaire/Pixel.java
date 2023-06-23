@@ -1,4 +1,4 @@
-package SAE.nosAlgo;
+package SAE.utilitaire;
 
 public class Pixel
 {

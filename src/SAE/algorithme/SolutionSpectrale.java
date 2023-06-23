@@ -1,4 +1,4 @@
-package SAE.nosAlgo;
+package SAE.algorithme;
 
 import SAE.Solution;
 
@@ -6,8 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
-import static SAE.nosAlgo.Outils.evaluer;
-import static SAE.nosAlgo.Outils.retournerRGB;
+import static SAE.utilitaire.Outils.evaluer;
+import static SAE.utilitaire.Outils.retournerRGB;
 
 public class SolutionSpectrale implements Solution {
     /**

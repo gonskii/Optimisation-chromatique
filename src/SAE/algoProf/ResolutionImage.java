@@ -1,18 +1,15 @@
 package SAE.algoProf;
 
 import SAE.Solution;
-import SAE.nosAlgo.Pixel;
+import SAE.utilitaire.Pixel;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import static SAE.nosAlgo.Outils.*;
+import static SAE.utilitaire.Outils.*;
 
 public class ResolutionImage implements  Solution{
 

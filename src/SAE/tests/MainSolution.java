@@ -1,14 +1,11 @@
 package SAE.tests;
 
 import SAE.algoProf.ResolutionImage;
-import SAE.nosAlgo.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 public class MainSolution {
 

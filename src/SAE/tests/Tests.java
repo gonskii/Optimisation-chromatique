@@ -1,21 +1,20 @@
 package SAE.tests;
 
 import SAE.algoProf.ResolutionImage;
-import SAE.nosAlgo.SolutionHistogramme;
-import SAE.nosAlgo.SolutionHistogrammePlus;
-import SAE.nosAlgo.SolutionOptimisation;
-import SAE.nosAlgo.SolutionSpectrale;
+import SAE.algorithme.SolutionHistogramme;
+import SAE.algorithme.SolutionHistogrammePlus;
+import SAE.algorithme.SolutionOptimisation;
+import SAE.algorithme.SolutionSpectrale;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import static SAE.nosAlgo.Outils.distance;
+import static SAE.utilitaire.Outils.distance;
 
 public class Tests {
 
