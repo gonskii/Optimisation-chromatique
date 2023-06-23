@@ -8,18 +8,12 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
-public class solution2Theo_fonctionnel {
+import static SAE.nosAlgo.Outils.evaluer;
+
+public class SolutionHistogrammePlus {
 
 
-    public static void main(String[] args) {
-
-        if (args.length != 2){
-            System.out.println("utilisation : java MaSolution [chemin image depuis ./images/] [nombre de couleurs]");
-            return;
-        }
-
-        // nombre de couleurs
-        int nombreDeCouleurs = Integer.parseInt(args[1]);
+    public static BufferedImage resoudre(int nombreDeCouleurs, BufferedImage bfImg) {
 
         // min et max : int des couleurs situées au extrémité de la plage de couleur de l'image.
         Color max=null, min=null;
@@ -28,7 +22,6 @@ public class solution2Theo_fonctionnel {
         Color[] couleurs = new Color[nombreDeCouleurs];
 
         try {
-            BufferedImage bfImg = ImageIO.read(new File("./images/"+args[0]));
             BufferedImage retour = new BufferedImage(bfImg.getWidth(), bfImg.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
             TreeMap<Color, Integer> utilisations = new TreeMap<Color, Integer>(new Comparator<Color>() {
                 @Override
@@ -145,23 +138,6 @@ public class solution2Theo_fonctionnel {
 
     }
 
-    public static int evaluer(Color c1, Color c2){
-        int[] tabC1 = retournerRGB(c1.getRGB());
-        int[] tabC2 = retournerRGB(c2.getRGB());
-
-        int d=0;
-        for (int i = 0; i < 3; i++) {
-            d+=Math.pow((tabC1[i]-tabC2[i]),2);
-        }
-        return d;
-    }
-
-    public static int[] retournerRGB(int rgb){
-        int blue = rgb & 0xff;
-        int green = (rgb & 0xff00) >> 8;
-        int red = (rgb & 0xff0000) >> 16;
-        return new int[]{red,green,blue};
-    }
 
 
 }

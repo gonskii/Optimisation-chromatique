@@ -17,7 +17,7 @@ public class SolutionOptimisation {
 
             HashMap<Color, ArrayList<Pixel>> couleursFinal = new HashMap<>();
 
-            Random random = RandomInt.getRandom();
+            Random random = Outils.getRandom();
             ArrayList<Color> couleurs = new ArrayList<Color>();
             HashSet<Integer> pixelUse = new HashSet<>();
             double minCouleurDistance = 600.0;
@@ -150,19 +150,4 @@ public class SolutionOptimisation {
     }
 
 
-    public static double distance(Color a, Color b)
-    {
-        int[] rgbC1 = couleurRGB(a.getRGB());
-        int[] rgbC2 = couleurRGB(b.getRGB());
-
-        return (Math.pow(rgbC1[0]-rgbC2[0],2)+Math.pow(rgbC1[1]-rgbC2[1],2)+Math.pow(rgbC1[2]-rgbC2[2],2));
-    }
-
-    public static int[] couleurRGB(int rgb)
-    {
-        int blue = rgb & 0xff;
-        int green = (rgb&0xff00) >> 8;
-        int red = (rgb&0xff0000) >> 16;
-        return new int[]{red, green, blue};
-    }
 }
