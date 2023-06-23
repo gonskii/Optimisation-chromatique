@@ -1,6 +1,7 @@
 package SAE.nosAlgo;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -84,5 +85,40 @@ public class Outils {
             // on ajoute la couleur avec la liste des pixels dans l'histogramme
             hashMap.put(color, pixels);
         }
+    }
+
+    /**
+     * Méthode qui permet de comparer deux images
+     * @param img1, la premiere image
+     * @param img2, la deuxieme image
+     */
+    public static long distance(BufferedImage img1, BufferedImage img2) {
+        long d = 0;
+
+        for (int i = 0; i < img1.getHeight(); i++) {
+            for (int j = 0; j < img1.getWidth(); j++) {
+
+                d += evaluerLong(img1.getRGB(j,i), img2.getRGB(j,i));
+
+            }
+        }
+        return d;
+    }
+
+    /**
+     * Méthode qui permet d'évaluer et renvoie un int
+     * @param rgb1, couleur une
+     * @param rgb2, couleur deux
+     * @return , long représentant la distance
+     */
+    public static long evaluerLong(int rgb1, int rgb2){
+        int[] tabC1 = retournerRGB(rgb1);
+        int[] tabC2 = retournerRGB(rgb2);
+
+        long d=0;
+        for (int i = 0; i < 3; i++) {
+            d+=Math.pow((tabC1[i]-tabC2[i]),2);
+        }
+        return d;
     }
 }
