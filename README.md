@@ -1,4 +1,4 @@
-# 2023_SAE301_elbouro11u_pinchon6u
+# Optimisation chromatique : Réduction de la palette d'une image
 
-L’objectif de cette SAE est de réduire de manière optimisée le nombre de couleurs d’une
+L’objectif est de réduire de manière optimisée le nombre de couleurs d’une
 image donnée.
